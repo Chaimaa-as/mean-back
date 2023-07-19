@@ -43,21 +43,21 @@ const errorHandler = (error) => {
   }
 };
 
-// app.set("port", process.env.PORT || 6000);
+app.set("port", process.env.PORT || 6000);
 
 // Crée un serveur HTTP
 const server = http.createServer(app);
 
 // Ecouteur de requête enregistré, consignant le port ou le canal nommé sur lequel le serveur s'exécute dans la console.
 //15-connect to DB : it is asynchronous so we're gonna have a promise, so we need to catch it
-// mongoose
-//   .connect(process.env.MONGO_URI)
-//   .then(() => {
-//     // 3-listen for request
-//     app.listen(process.env.PORT, () => {
-//       console.log("coonected to DB & listening on port", process.env.PORT);
-//     });
-//   })
-//   .catch(() => {
-//     console.log(error);
-//   });
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    // 3-listen for request
+    app.listen(process.env.PORT, () => {
+      console.log("coonected to DB & listening on port", process.env.PORT);
+    });
+  })
+  .catch(() => {
+    console.log(error);
+  });
